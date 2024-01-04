@@ -69,7 +69,7 @@ class Rectangle:
 
     def __repr__(self):
         """repr method to enable create new instance using #"""
-        return "Rectangle(" + str(self.__width) +
+        return "Rectangle(" + str(self.__width) +\
             ", " + str(self.__height) + ")"
 
     def __del__(self):
