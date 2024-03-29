@@ -1,25 +1,25 @@
 #!/usr/bin/python3
 """
-Fuction to find a pick
+Find Peak task 6
 """
 
 
 def find_peak(list_of_integers):
-    """ Function find_peak """
-    lenght = len(list_of_integers)
-    if lenght == 0:
+    """Return a peak in a list of unsorted integers."""
+    if list_of_integers == []:
         return None
-    else:
-        return findPeak(list_of_integers, lenght, 0, lenght - 1)
 
+    size = len(list_of_integers)
+    if size == 1:
+        return list_of_integers[0]
+    elif size == 2:
+        return max(list_of_integers)
 
-def findPeak(arr, lenght, low, n):
-    """ Auxiliar Function find_peak """
-    midd = int(low + (n - low)/2)
-    if ((midd == 0 or arr[midd - 1] <= arr[midd]) and
-       (midd == lenght - 1 or arr[midd + 1] <= arr[midd])):
-        return arr[midd]
-    elif (midd >= 0 and arr[midd + 1] > arr[midd]):
-        return findPeak(arr, lenght, (midd + 1), n)
+    mid = int(size / 2)
+    peak = list_of_integers[mid]
+    if peak > list_of_integers[mid - 1] and peak > list_of_integers[mid + 1]:
+        return peak
+    elif peak < list_of_integers[mid - 1]:
+        return find_peak(list_of_integers[:mid])
     else:
-        return findPeak(arr, lenght, low, (midd - 1))
+        return find_peak(list_of_integers[mid + 1:])
